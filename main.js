@@ -1,7 +1,6 @@
 const baseURL = "http://localhost:3000/blogs"
 
-document.addEventListener("DOMContentLoaded", event => {
-  console.log("yo dog")
+const getAllPosts = document.addEventListener("DOMContentLoaded", event => {
   axios.get(`${baseURL}`).then(result => {
     const blogs = result.data.blogs
     blogs.forEach(blog => {
@@ -14,11 +13,31 @@ document.addEventListener("DOMContentLoaded", event => {
         </ul>`
       )
     })
+    $("#view").append(
+      `<section>
+      <header>
+        <h2>${blogs[0].title}</h2>
+        <hr>
+      </header>
+      <article><p>${blogs[0].content}</p></article>
+      <aside class="my-4">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" id="edit-post" href="#/posts/131/edit">Edit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" id="delete-post" href="#">Delete</a>
+          </li>
+        </ul>
+      </aside>
+    </section>`
+    )
   })
 })
 
-let newBlogForm = document.getElementById("create-post")
+const newBlogForm = document.getElementById("create-post")
 newBlogForm.addEventListener("click", event => {
+  $("section").remove()
   $("#view").append(
     `<form id="post-form" action="/posts/">
       <div class="form-group">
