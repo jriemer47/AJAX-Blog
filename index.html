@@ -25,8 +25,8 @@
 
     <div class="jumbotron jumbotron-fluid bg-info text-light">
       <div class="container">
-        <h1 class="display-3">Jon's Blog</h1>
-        <p class="lead">Cool Stuff</p>
+        <h1 class="display-3">Jon's Emotions</h1>
+        <p class="lead">Stuff</p>
         <p class="lead">
           <button id="create-post" class="btn btn-secondary">Create a New Post</button>
         </p>
@@ -34,22 +34,78 @@
     </div>
 
     <div class="container">
+
       <div class="row">
         <div class="col">
-          <section style="display: none;" class="alert alert-danger text-center" id="errors"></section>
+          <section style="display: none;" class="alert alert-danger text-center" id="errors">"Fill out ALL boxes!!!!"</section>
         </div>
       </div>
+
       <div class="row">
-        <div id="sidebar" class="col-4"></div>
-        <div id="view" class="col-8"></div>
+        <div id="blog-view" class="col-4"></div>
+
+        <div id="edit-form" class="col-8">
+          <form action="/posts/">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="titleEdit" value="">
+            </div>
+            <div class="form-group">
+              <label for="title">Content</label>
+              <textarea type="text" rows="6" class="form-control" id="contentEdit"></textarea>
+            </div>
+            <button id="postButton" type="button" class="btn btn-info btn-large">Update Post</button>
+          </form>
+        </div>
+
+
+        <div id="update-view" class="col-8">
+          <section>
+            <header>
+              <h2 id="title"></h2>
+              <hr>
+            </header>
+            <article>
+              <p id="content"></p>
+            </article>
+            <aside class="my-4">
+              <ul class="nav justify-content-end">
+                <li class="nav-item">
+                  <a class="nav-link" id="edit-post" href="#/posts/131/edit">Edit</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-danger" id="delete-post" href="#">Delete</a>
+                </li>
+              </ul>
+            </aside>
+          </section>
+        </div>
+
+        <div id="post-form" class="col-8">
+          <form action="/posts/">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="titlePost" value="">
+            </div>
+            <div class="form-group">
+              <label for="title">Content</label>
+              <textarea type="text" rows="6" class="form-control" id="contentPost"></textarea>
+            </div>
+            <button id="postButton" type="button" class="btn btn-info btn-large">Create New Post</button>
+          </form>
+        </div>
+
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js" charset="utf-8"></script>
     <script src="newBlogPost.js" charset="utf-8"></script>
-
-
+    <script src="delete.js" charset="utf-8"></script>
+    <script src="renderAll.js" charset="utf-8"></script>
+    <script src="renderRight.js" charset="utf-8"></script>
+    <script src="postBlog.js" charset="utf-8"></script>
   </body>
 
 </html>
